@@ -1,0 +1,25 @@
+
+[package]
+name = "nexcore-hook-lib"
+version = "1.0.0"
+edition = "2024"
+authors = ["NexVigilant Team <team@nexvigilant.com>"]
+license = "LicenseRef-Proprietary"
+description = "Shared utilities for Claude Code hooks - atomic signals, neurotransmitter pattern, cytokine bridge"
+
+[dependencies]
+serde = { version = "1.0.204", features = ["derive"] }
+serde_json = { version = "1.0.120" }
+regex = { version = "1.10.5" }
+
+# Cytokine signaling (optional, for Guardian integration)
+nexcore-cytokine = { version = "1.0.0", path = "../nexcore-cytokine", registry = "nexcore", optional = true }
+tokio = { version = "1.38.0", features = ["full"], optional = true }
+
+[features]
+default = []
+# Enable cytokine integration with Guardian homeostasis loop
+cytokine = ["dep:nexcore-cytokine", "dep:tokio"]
+
+[lints]
+workspace = true
